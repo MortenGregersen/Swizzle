@@ -30,26 +30,26 @@ private func _swizzleMethod(_ class_: AnyClass, from selector1: Selector, to sel
 }
 
 /// Instance-method swizzling.
-public func swizzleInstanceMethod(_ class_: AnyClass, from sel1: Selector, to sel2: Selector)
+@objc public func swizzleInstanceMethod(_ class_: AnyClass, from sel1: Selector, to sel2: Selector)
 {
     _swizzleMethod(class_, from: sel1, to: sel2, isClassMethod: false)
 }
 
 /// Instance-method swizzling for unsafe raw-string.
 /// - Note: This is useful for non-`#selector`able methods e.g. `dealloc`, private ObjC methods.
-public func swizzleInstanceMethodString(_ class_: AnyClass, from sel1: String, to sel2: String)
+@objc public func swizzleInstanceMethodString(_ class_: AnyClass, from sel1: String, to sel2: String)
 {
     swizzleInstanceMethod(class_, from: Selector(sel1), to: Selector(sel2))
 }
 
 /// Class-method swizzling.
-public func swizzleClassMethod(_ class_: AnyClass, from sel1: Selector, to sel2: Selector)
+@objc public func swizzleClassMethod(_ class_: AnyClass, from sel1: Selector, to sel2: Selector)
 {
     _swizzleMethod(class_, from: sel1, to: sel2, isClassMethod: true)
 }
 
 /// Class-method swizzling for unsafe raw-string.
-public func swizzleClassMethodString(_ class_: AnyClass, from sel1: String, to sel2: String)
+@objc public func swizzleClassMethodString(_ class_: AnyClass, from sel1: String, to sel2: String)
 {
     swizzleClassMethod(class_, from: Selector(sel1), to: Selector(sel2))
 }
